@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GenerateSvgComponents": {
+      "commandName": "Project",
+      "commandLineArgs": "-n=Flags -src=\"C:\\_repo\\WK\\apps\\wk-apps-site\\apps\\wk-apps-site\\public\\images\\flags\\rect\" -out=\"out\""
+    }
+  }
+}

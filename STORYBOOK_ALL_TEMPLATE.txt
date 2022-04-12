@@ -1,0 +1,6 @@
+﻿export const ALL = (args: ISvgProps) => (
+<div style={{ display:'grid', 'grid-auto-flow':'columns' }}>
+{{stories}}
+</div>
+);
+ALL.args = defaultProps;

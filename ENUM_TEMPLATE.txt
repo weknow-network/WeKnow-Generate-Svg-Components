@@ -1,0 +1,7 @@
+﻿/**
+ * list of all available icons of {{name}}
+ */
+
+export enum {{name}}IconsList {
+{{body}}
+}

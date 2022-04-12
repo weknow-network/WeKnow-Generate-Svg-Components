@@ -1,0 +1,2 @@
+﻿export { W{{name}}Icons } from "./W{{name}}Icons";
+export { {{name}}IconsList } from "./{{name}}IconsList";

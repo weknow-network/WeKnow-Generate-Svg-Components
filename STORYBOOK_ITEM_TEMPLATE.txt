@@ -1,0 +1,4 @@
+﻿export const {{name}}Svg = (args: ISvgProps) => (
+  {{story}}
+);
+{{name}}Svg.args = defaultProps;

@@ -1,0 +1,6 @@
+﻿import styled from "styled-components";
+import { {{name}}Raw } from "./{{name}}Raw";
+
+export const {{name}} = styled({{name}}Raw)`
+  fill: currentColor;
+`;

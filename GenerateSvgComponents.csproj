@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="COMP_RAW_TEMPLATE.txt" />
+    <None Remove="COMP_STYLE_TEMPLATE.txt" />
+    <None Remove="ENUM_TEMPLATE.txt" />
+    <None Remove="INDEX_TEMPLATE.txt" />
+    <None Remove="RAW_TEMPLATE.txt" />
+    <None Remove="STORYBOOK_ALL_TEMPLATE.txt" />
+    <None Remove="STORYBOOK_ITEM_TEMPLATE.txt" />
+    <None Remove="STORYBOOK_TEMPLATE.txt" />
+    <None Remove="STYLE_TEMPLATE.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="COMP_STYLE_TEMPLATE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="COMP_RAW_TEMPLATE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ENUM_TEMPLATE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="INDEX_TEMPLATE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="STORYBOOK_ALL_TEMPLATE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="STORYBOOK_ITEM_TEMPLATE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="STORYBOOK_TEMPLATE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="STYLE_TEMPLATE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RAW_TEMPLATE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Weknow-BasicExtensions" Version="1.0.36" />
+  </ItemGroup>
+
+
+</Project>

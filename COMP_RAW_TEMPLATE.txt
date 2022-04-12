@@ -1,0 +1,24 @@
+﻿import React from "react";
+import { guardSafeIcon, guardUnsafeIcon, IWSvgProps } from "..";
+import { {{name}}IconsList } from ".";
+
+{{imports}}
+
+/**
+ * {{name}} collection
+ */
+export const W{{name}}IconsRaw = (props: IWSvgProps) => {
+  const icon = guardSafeIcon(props)
+    ? props.icon
+    : guardUnsafeIcon(props)
+    ? props.icon_UNSAFE
+    : undefined;
+  const { className } = props;
+  if (!icon) return <></>;
+
+  return (
+    <div className={className}>
+      {{switch}}
+    </div>
+  );
+};

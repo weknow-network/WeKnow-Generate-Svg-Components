@@ -1,0 +1,21 @@
+﻿import { Meta } from "@storybook/react/types-6-0";
+import React from "react";
+import { ISvgProps } from "../ISvgProps";
+import { W{{name}}Icons } from "./W{{name}}Icons";
+
+export default {
+  title: "SVG/{{name}}/All",
+  component: (props: ISvgProps) => <W{{name}}Icons {...props} />,
+
+  argTypes: {
+    width: { control: "range", min: 20, max: 200, step: 5, value: 40 },
+  },
+} as Meta;
+
+const defaultProps: ISvgProps = {
+  width: "8rem",
+};
+
+{{all}}
+
+{{stories}}
