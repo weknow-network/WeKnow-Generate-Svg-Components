@@ -2,6 +2,6 @@
  * list of all available icons of {{name}}
  */
 
-export enum {{name}}IconsList {
+export enum {{prefix}}{{name}}List {
 {{body}}
 }

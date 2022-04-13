@@ -1,0 +1,11 @@
+﻿<div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "auto",
+      gridAutoRows: "auto",
+      gridGap: "1rem",
+      justifyItems: "center",
+    }}>
+<W{{prefix}}{{comp-name}} icon='{{name}}' {...args} />
+<h1>{{name}}</h1>
+</div>

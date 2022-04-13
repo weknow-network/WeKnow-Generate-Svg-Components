@@ -3,8 +3,8 @@
     style={{
       display: "grid",
       width: "100vw",
-      gridTemplateColumns: "repeat(auto-fill, 8rem)",
-      gridAutoRows: "8rem",
+      gridTemplateColumns: "repeat(auto-fill, 10rem)",
+      gridAutoRows: "auto",
       gridGap: "4rem",
     }}>
 {{stories}}

@@ -1,6 +1,6 @@
 import { ISvgProps } from "../../ISvgProps";
-import { {{name}}IconsList } from "../{{name}}IconsList";
+import { {{prefix}}{{name}}List } from "../{{prefix}}{{name}}List";
 
 export interface IW{{name}}SvgSafeProps extends ISvgProps {
-  icon?: keyof typeof {{name}}IconsList;
+  icon?: {{prefix}}{{name}}List | {{names}};
 }

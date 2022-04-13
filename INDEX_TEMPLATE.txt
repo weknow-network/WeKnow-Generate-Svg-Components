@@ -1,3 +1,3 @@
-﻿export { W{{name}}Icons } from "./W{{name}}Icons";
-export { {{name}}IconsList } from "./{{name}}IconsList";
+﻿export { W{{prefix}}{{name}} } from "./W{{prefix}}{{name}}";
+export { {{prefix}}{{name}}List } from "./{{prefix}}{{name}}List";
 export * from "./contracts";

@@ -1,18 +1,18 @@
 ﻿import React from "react";
 import { guardSafeIcon } from "./contracts/guardSafeIcon";
-import { guardUnsafeIcon } from "./contracts/guardUnsafeIcon";
+import { guardUnsafeSvg } from "../guardUnsafeSvg";
 import { IW{{name}}SvgProps } from ".";
-import { {{name}}IconsList } from ".";
+import { {{prefix}}{{name}}List } from ".";
 
 {{imports}}
 
 /**
  * {{name}} collection
  */
-export const W{{name}}IconsRaw = (props: IW{{name}}SvgProps) => {
+export const W{{prefix}}{{name}}Raw = (props: IW{{name}}SvgProps) => {
   const icon = guardSafeIcon(props)
     ? props.icon
-    : guardUnsafeIcon(props)
+    : guardUnsafeSvg(props)
     ? props.icon_UNSAFE
     : undefined;
   const { className } = props;

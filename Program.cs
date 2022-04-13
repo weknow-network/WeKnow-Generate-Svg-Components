@@ -6,6 +6,7 @@ const string SRC = "-src";
 const string OUT = "-out";
 const string NAME = "-n";
 const string SVGS_FOLDER = "SVGs";
+const string PREFIX = "Svg";
 const string CONTRACTS_FOLDER = "contracts";
 
 var regexClean = new Regex("xlink:href=\".*\"");
@@ -50,8 +51,8 @@ Console.ResetColor();
 Console.WriteLine($"\t{SRC} {src}");
 Console.WriteLine($"\t{OUT} {dest}");
 
-if(!dest.EndsWith(compName) && !dest.EndsWith($"{compName}Icons"))
-    dest = Path.Combine(dest, $"{compName}Icons");
+if(!dest.EndsWith(compName) && !dest.EndsWith($"{PREFIX}{compName}"))
+    dest = Path.Combine(dest, $"{PREFIX}{compName}");
 var outDir = Path.GetFullPath(dest);
 if(!Directory.Exists(outDir)) 
     Directory.CreateDirectory(outDir);
@@ -61,6 +62,7 @@ StringBuilder imports = new StringBuilder();
 StringBuilder switchs = new StringBuilder();
 StringBuilder stories = new StringBuilder();
 StringBuilder wicons = new StringBuilder();
+List<string> fileNames = new ();
 
 
 foreach (var file in Directory.GetFiles(src, "*.svg"))
@@ -69,29 +71,34 @@ foreach (var file in Directory.GetFiles(src, "*.svg"))
 }
 
 string enums = File.ReadAllText("ENUM_TEMPLATE.txt")
+    .Replace("{{prefix}}", PREFIX)
     .Replace("{{name}}", compName)
     .Replace("{{body}}", enumesBody.ToString());
-string enumsFile = Path.Combine(outDir, $"{compName}IconsList.ts");
+string enumsFile = Path.Combine(outDir, $"{PREFIX}{compName}List.ts");
 File.WriteAllText(enumsFile, enums);
 
 
 string compRaw = File.ReadAllText("COMP_RAW_TEMPLATE.txt")
+    .Replace("{{prefix}}", PREFIX)
     .Replace("{{name}}", compName)
     .Replace("{{imports}}", imports.ToString())
     .Replace("{{switch}}", switchs.ToString());
-string compRawFile = Path.Combine(outDir, $"W{compName}IconsRaw.tsx");
+string compRawFile = Path.Combine(outDir, $"W{PREFIX}{compName}Raw.tsx");
 File.WriteAllText(compRawFile, compRaw);
 
 
 string comp = File.ReadAllText("COMP_STYLE_TEMPLATE.txt")
+    .Replace("{{prefix}}", PREFIX)
     .Replace("{{name}}", compName);
-string compFile = Path.Combine(outDir, $"W{compName}Icons.ts");
+string compFile = Path.Combine(outDir, $"W{PREFIX}{compName}.ts");
 File.WriteAllText(compFile, comp);
 
 string allstories = File.ReadAllText("STORYBOOK_ALL_TEMPLATE.txt")
                         .Replace("{{stories}}", wicons.ToString());
 
 string storybookItems = File.ReadAllText("STORYBOOK_TEMPLATE.txt")
+    .Replace("{{prefix}}", PREFIX)
+    .Replace("{{size}}", "30")
     .Replace("{{type}}", "Items")
     .Replace("{{name}}", compName)
     .Replace("{{stories}}", stories.ToString());
@@ -99,6 +106,8 @@ string storybookItemsFile = Path.Combine(outDir, $"W{compName}.items.stories.tsx
 File.WriteAllText(storybookItemsFile, storybookItems);
 
 string storybookAll = File.ReadAllText("STORYBOOK_TEMPLATE.txt")
+    .Replace("{{prefix}}", PREFIX)
+    .Replace("{{size}}", "10")
     .Replace("{{type}}", "All")
     .Replace("{{name}}", compName)
     .Replace("{{stories}}", allstories.ToString());
@@ -106,6 +115,7 @@ string storybookAllFile = Path.Combine(outDir, $"W{compName}.all.stories.tsx");
 File.WriteAllText(storybookAllFile, storybookAll);
 
 string index = File.ReadAllText("INDEX_TEMPLATE.txt")
+    .Replace("{{prefix}}", PREFIX)
     .Replace("{{name}}", compName);
 string indexFile = Path.Combine(outDir, $"index.ts");
 File.WriteAllText(indexFile, index);
@@ -121,10 +131,6 @@ string guardSafeIcon = File.ReadAllText(Path.Combine(CONTRACTS_FOLDER, "guardSaf
 string guardSafeIconFile = Path.Combine(contractsDir, $"guardSafeIcon.ts");
 File.WriteAllText(guardSafeIconFile, guardSafeIcon);
 
-string guardUnsafeIcon = File.ReadAllText(Path.Combine(CONTRACTS_FOLDER, "guardUnsafeIcon.txt"))
-    .Replace("{{name}}", compName);
-string guardUnsafeIconFile = Path.Combine(contractsDir, $"guardUnsafeIcon.ts");
-File.WriteAllText(guardUnsafeIconFile, guardUnsafeIcon);
 
 string indexOfContracts = File.ReadAllText(Path.Combine(CONTRACTS_FOLDER, "index.txt"))
     .Replace("{{name}}", compName);
@@ -137,20 +143,16 @@ string IWSvgPropsFile = Path.Combine(contractsDir, $"IW{compName}SvgProps.ts");
 File.WriteAllText(IWSvgPropsFile, IWSvgProps);
 
 string IWSvgSafeProps = File.ReadAllText(Path.Combine(CONTRACTS_FOLDER, "IWSvgSafeProps.txt"))
-    .Replace("{{name}}", compName);
+    .Replace("{{name}}", compName)
+    .Replace("{{names}}", string.Join(" | ", fileNames.Select(m => $"'{m}'")));
 string IWSvgSafePropsFile = Path.Combine(contractsDir, $"IW{compName}SvgSafeProps.ts");
 File.WriteAllText(IWSvgSafePropsFile, IWSvgSafeProps);
-
-string IWSvgUnsafeProps = File.ReadAllText(Path.Combine(CONTRACTS_FOLDER, "IWSvgUnsafeProps.txt"))
-    .Replace("{{name}}", compName);
-string IWSvgUnsafePropsFile = Path.Combine(contractsDir, $"IW{compName}SvgUnsafeProps.ts");
-File.WriteAllText(IWSvgUnsafePropsFile, IWSvgUnsafeProps);
-
 
 
 void GenerateSvg(string path)
 {
     string fileName = Path.GetFileNameWithoutExtension(path);
+    fileNames.Add(fileName);
     string nameLower = fileName.ToCamelCase();
     string nameUpper = fileName.ToPascalCase();
     string dir = Path.Combine(outDir, SVGS_FOLDER, nameUpper);
@@ -203,15 +205,18 @@ void GenerateSvg(string path)
     File.WriteAllText(rawFile, raw);
     enumesBody.AppendLine($"{nameLower} = \"{fileName}\",");
     imports.AppendLine($"import {{ {nameUpper} }} from './{SVGS_FOLDER}/{nameUpper}/{nameUpper}';");
-    switchs.AppendLine($"{{icon === {compName}IconsList.{nameLower} && <{nameUpper} className='svg' {{...props}} />}}");
+    switchs.AppendLine($"{{icon === {PREFIX}{compName}List.{nameLower} && <{nameUpper} className='svg' {{...props}} />}}");
 
 
-    string story = $"<W{compName}Icons icon='{nameUpper}' {{...args}} />";
-    wicons.AppendLine(story);
+    string story = File.ReadAllText("STORYBOOK_ELEMENT_TEMPLATE.txt")
+                            .Replace("{{prefix}}", PREFIX)
+                            .Replace("{{name}}", fileName)
+                            .Replace("{{comp-name}}", compName);
     string storyTemplate = File.ReadAllText("STORYBOOK_ITEM_TEMPLATE.txt")
                             .Replace("{{name}}", nameUpper)
                             .Replace("{{story}}", story);
     stories.AppendLine(storyTemplate);
+    wicons.AppendLine(story);
 }
 
 

@@ -1,7 +1,7 @@
 ﻿import styled from "styled-components";
-import { W{{name}}IconsRaw } from "./W{{name}}IconsRaw";
+import { W{{prefix}}{{name}}Raw } from "./W{{prefix}}{{name}}Raw";
 
-export const W{{name}}Icons = styled(W{{name}}IconsRaw)`
+export const W{{prefix}}{{name}} = styled(W{{prefix}}{{name}}Raw)`
   min-height: 3rem;
 
   .svg {

@@ -1,5 +1,0 @@
-import { ISvgProps } from "../../ISvgProps";
-
-export interface IW{{name}}SvgUnsafeProps extends ISvgProps {
-  icon_UNSAFE?: string;
-}
