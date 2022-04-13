@@ -143,6 +143,7 @@ string IWSvgPropsFile = Path.Combine(contractsDir, $"IW{compName}SvgProps.ts");
 File.WriteAllText(IWSvgPropsFile, IWSvgProps);
 
 string IWSvgSafeProps = File.ReadAllText(Path.Combine(CONTRACTS_FOLDER, "IWSvgSafeProps.txt"))
+    .Replace("{{prefix}}", PREFIX)
     .Replace("{{name}}", compName)
     .Replace("{{names}}", string.Join(" | ", fileNames.Select(m => $"'{m}'")));
 string IWSvgSafePropsFile = Path.Combine(contractsDir, $"IW{compName}SvgSafeProps.ts");
@@ -155,6 +156,7 @@ void GenerateSvg(string path)
     fileNames.Add(fileName);
     string nameLower = fileName.ToCamelCase();
     string nameUpper = fileName.ToPascalCase();
+    string nameSCREAM = fileName.ToSCREAMING();
     string dir = Path.Combine(outDir, SVGS_FOLDER, nameUpper);
     if(Directory.Exists(dir))
         Directory.Delete(dir, true);
@@ -203,14 +205,14 @@ void GenerateSvg(string path)
 
     string rawFile = Path.Combine(dir, $"{nameUpper}Raw.tsx");
     File.WriteAllText(rawFile, raw);
-    enumesBody.AppendLine($"{nameLower} = \"{fileName}\",");
+    enumesBody.AppendLine($"{nameLower} = \"{nameSCREAM}\",");
     imports.AppendLine($"import {{ {nameUpper} }} from './{SVGS_FOLDER}/{nameUpper}/{nameUpper}';");
     switchs.AppendLine($"{{icon === {PREFIX}{compName}List.{nameLower} && <{nameUpper} className='svg' {{...props}} />}}");
 
 
     string story = File.ReadAllText("STORYBOOK_ELEMENT_TEMPLATE.txt")
                             .Replace("{{prefix}}", PREFIX)
-                            .Replace("{{name}}", fileName)
+                            .Replace("{{name}}", nameSCREAM)
                             .Replace("{{comp-name}}", compName);
     string storyTemplate = File.ReadAllText("STORYBOOK_ITEM_TEMPLATE.txt")
                             .Replace("{{name}}", nameUpper)
