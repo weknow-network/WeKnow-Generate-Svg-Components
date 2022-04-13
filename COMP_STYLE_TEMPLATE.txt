@@ -2,6 +2,7 @@
 import { W{{prefix}}{{name}}Raw } from "./W{{prefix}}{{name}}Raw";
 
 export const W{{prefix}}{{name}} = styled(W{{prefix}}{{name}}Raw)`
+  display: grid;
   min-height: 3rem;
 
   .svg {

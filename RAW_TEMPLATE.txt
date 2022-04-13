@@ -2,10 +2,11 @@
 
 export const {{name}}Raw = ({ className, ...other }: ISvgProps) => (
   <svg
-    className={className}
     {...other}
+    className={className}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="{{viewBox}}"
+    preserveAspectRatio="xMidYMid meet"
   >
 {{body}} 
   </svg>

@@ -1,3 +1,4 @@
 ﻿export { W{{prefix}}{{name}} } from "./W{{prefix}}{{name}}";
 export { {{prefix}}{{name}}List } from "./{{prefix}}{{name}}List";
+export { isIn{{prefix}}{{name}}List } from "./isIn{{prefix}}{{name}}List";
 export * from "./contracts";

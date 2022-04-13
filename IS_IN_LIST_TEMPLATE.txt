@@ -1,0 +1,11 @@
+﻿import { {{prefix}}{{name}}List } from "./{{prefix}}{{name}}List";
+
+/**
+ * check if exist in the list
+ */
+export const isInSvg{{name}}List = (candidate: string) => {
+  {{body}}
+
+
+  return false;
+};

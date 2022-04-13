@@ -62,6 +62,7 @@ StringBuilder imports = new StringBuilder();
 StringBuilder switchs = new StringBuilder();
 StringBuilder stories = new StringBuilder();
 StringBuilder wicons = new StringBuilder();
+StringBuilder isIn = new StringBuilder();
 List<string> fileNames = new ();
 
 
@@ -76,6 +77,13 @@ string enums = File.ReadAllText("ENUM_TEMPLATE.txt")
     .Replace("{{body}}", enumesBody.ToString());
 string enumsFile = Path.Combine(outDir, $"{PREFIX}{compName}List.ts");
 File.WriteAllText(enumsFile, enums);
+
+string isInEnums = File.ReadAllText("IS_IN_LIST_TEMPLATE.txt")
+    .Replace("{{prefix}}", PREFIX)
+    .Replace("{{name}}", compName)
+    .Replace("{{body}}", isIn.ToString());
+string isInEnumsFile = Path.Combine(outDir, $"isIn{PREFIX}{compName}List.ts");
+File.WriteAllText(isInEnumsFile, isInEnums);
 
 
 string compRaw = File.ReadAllText("COMP_RAW_TEMPLATE.txt")
@@ -219,6 +227,8 @@ void GenerateSvg(string path)
                             .Replace("{{story}}", story);
     stories.AppendLine(storyTemplate);
     wicons.AppendLine(story);
+
+    isIn.AppendLine($"if (candidate === {PREFIX}{compName}List.{nameLower}) return true;");
 }
 
 

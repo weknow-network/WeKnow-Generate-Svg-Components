@@ -17,6 +17,7 @@
     <None Remove="contracts\IWSvgSafeProps.txt" />
     <None Remove="ENUM_TEMPLATE.txt" />
     <None Remove="INDEX_TEMPLATE.txt" />
+    <None Remove="IS_IN_LIST_TEMPLATE.txt" />
     <None Remove="RAW_TEMPLATE.txt" />
     <None Remove="STORYBOOK_ALL_TEMPLATE.txt" />
     <None Remove="STORYBOOK_ELEMENT_TEMPLATE.txt" />
@@ -63,6 +64,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="STORYBOOK_TEMPLATE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="IS_IN_LIST_TEMPLATE.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="STYLE_TEMPLATE.txt">
