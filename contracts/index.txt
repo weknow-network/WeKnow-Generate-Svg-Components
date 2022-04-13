@@ -1,0 +1,2 @@
+export type { IW{{name}}SvgProps } from "./IW{{name}}SvgProps";
+

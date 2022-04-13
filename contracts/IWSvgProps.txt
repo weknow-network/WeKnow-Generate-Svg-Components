@@ -1,0 +1,4 @@
+import { IW{{name}}SvgSafeProps } from "./IW{{name}}SvgSafeProps";
+import { IW{{name}}SvgUnsafeProps } from "./IW{{name}}SvgUnsafeProps";
+
+export type IW{{name}}SvgProps = IW{{name}}SvgSafeProps | IW{{name}}SvgUnsafeProps;

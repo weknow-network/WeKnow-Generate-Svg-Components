@@ -4,7 +4,7 @@ import { ISvgProps } from "../ISvgProps";
 import { W{{name}}Icons } from "./W{{name}}Icons";
 
 export default {
-  title: "SVG/{{name}}/All",
+  title: "SVG/{{name}}/{{type}}",
   component: (props: ISvgProps) => <W{{name}}Icons {...props} />,
 
   argTypes: {
@@ -15,7 +15,5 @@ export default {
 const defaultProps: ISvgProps = {
   width: "8rem",
 };
-
-{{all}}
 
 {{stories}}

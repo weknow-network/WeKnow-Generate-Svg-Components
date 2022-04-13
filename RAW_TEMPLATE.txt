@@ -1,4 +1,4 @@
-﻿import { ISvgProps } from "../../ISvgProps";
+﻿import { ISvgProps } from "../../../ISvgProps";
 
 export const {{name}}Raw = ({ className, ...other }: ISvgProps) => (
   <svg

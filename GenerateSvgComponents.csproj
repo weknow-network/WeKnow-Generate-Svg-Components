@@ -10,6 +10,12 @@
   <ItemGroup>
     <None Remove="COMP_RAW_TEMPLATE.txt" />
     <None Remove="COMP_STYLE_TEMPLATE.txt" />
+    <None Remove="contracts\guardSafeIcon.txt" />
+    <None Remove="contracts\guardUnsafeIcon.txt" />
+    <None Remove="contracts\index.txt" />
+    <None Remove="contracts\IWSvgProps.txt" />
+    <None Remove="contracts\IWSvgSafeProps.txt" />
+    <None Remove="contracts\IWSvgUnsafeProps.txt" />
     <None Remove="ENUM_TEMPLATE.txt" />
     <None Remove="INDEX_TEMPLATE.txt" />
     <None Remove="RAW_TEMPLATE.txt" />
@@ -24,6 +30,24 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="COMP_RAW_TEMPLATE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="contracts\guardSafeIcon.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="contracts\guardUnsafeIcon.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="contracts\index.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="contracts\IWSvgProps.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="contracts\IWSvgSafeProps.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="contracts\IWSvgUnsafeProps.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ENUM_TEMPLATE.txt">

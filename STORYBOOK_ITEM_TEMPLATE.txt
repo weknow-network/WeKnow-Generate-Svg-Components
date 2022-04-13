@@ -1,4 +1,14 @@
 ﻿export const {{name}}Svg = (args: ISvgProps) => (
-  {{story}}
+<div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "auto",
+      gridAutoRows: "auto",
+      gridGap: "1rem",
+    }}>
+{{story}}
+<h3>{{name}}</h3>
+</div>  
 );
 {{name}}Svg.args = defaultProps;
+{{name}}Svg.storyName = "{{name}}";

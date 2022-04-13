@@ -1,0 +1,5 @@
+import { IW{{name}}SvgSafeProps } from "./IW{{name}}SvgSafeProps";
+import { IW{{name}}SvgProps } from "./IW{{name}}SvgProps";
+
+export const guardSafeIcon = (props: IW{{name}}SvgProps): props is IW{{name}}SvgSafeProps =>
+  (props as any)?.icon;
