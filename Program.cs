@@ -212,6 +212,11 @@ void GenerateSvg(string path)
 
     string rawFile = Path.Combine(dir, $"{nameUpper}Raw.tsx");
     File.WriteAllText(rawFile, raw);
+    string svgIndexFile = Path.Combine(dir, $"index.ts");
+    string svgIndex = File.ReadAllText("SVG_INDEX_TEMPLATE.txt")
+                            .Replace("{{name}}", nameUpper);
+    File.WriteAllText(svgIndexFile, svgIndex);
+
     enumesBody.AppendLine($"{nameLower} = \"{nameSCREAM}\",");
     imports.AppendLine($"import {{ {nameUpper} }} from './{SVGS_FOLDER}/{nameUpper}/{nameUpper}';");
     switchs.AppendLine($"{{icon === {PREFIX}{compName}List.{nameLower} && <{nameUpper} className='svg' {{...props}} />}}");

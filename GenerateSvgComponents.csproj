@@ -24,6 +24,7 @@
     <None Remove="STORYBOOK_ITEM_TEMPLATE.txt" />
     <None Remove="STORYBOOK_TEMPLATE.txt" />
     <None Remove="STYLE_TEMPLATE.txt" />
+    <None Remove="SVG_INDEX_TEMPLATE.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,6 +47,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ENUM_TEMPLATE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SVG_INDEX_TEMPLATE.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="INDEX_TEMPLATE.txt">
