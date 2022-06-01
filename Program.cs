@@ -19,9 +19,9 @@ var src = args.Where(m => m.StartsWith(SRC))
                 .First();
 if (src == null)
 {
-    Console.WriteLine($"{SRC} argument is missing");
-    Console.WriteLine($"{SRC} stands for the source directory");
-    return;
+
+    Console.WriteLine("Enter source folder");
+    src = Console.ReadLine();
 }
 
 if (!Directory.Exists(src))
@@ -35,9 +35,8 @@ var dest = args.Where(m => m.StartsWith(OUT))
                 .First();
 if (dest == null)
 {
-    Console.WriteLine($"{OUT} argument is missing");
-    Console.WriteLine($"{OUT} stands for the out directory, where the generated file should be");
-    return;
+    Console.WriteLine("Enter destination folder");
+    dest = Console.ReadLine();
 }
 
 var compName = args.Where(m => m.StartsWith(NAME))
@@ -162,7 +161,7 @@ void GenerateSvg(string path)
 {
     string fileName = Path.GetFileNameWithoutExtension(path);
     fileNames.Add(fileName);
-    string nameLower = fileName.ToCamelCase();
+     string nameLower = fileName.ToCamelCase();
     string nameUpper = fileName.ToPascalCase();
     string nameSCREAM = fileName.ToSCREAMING();
     string dir = Path.Combine(outDir, SVGS_FOLDER, nameUpper);
