@@ -16,4 +16,7 @@ const defaultProps: ISvgProps = {
   width: "{{size}}rem",
 };
 
+const style = { userSelect: "text", margin: "4rem" } as const;
+
+
 {{stories}}

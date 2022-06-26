@@ -1,4 +1,6 @@
-﻿export const ALL = (args: ISvgProps) => (
+﻿const style = { userSelect: "text", margin: "4rem" } as const;
+
+export const ALL = (args: ISvgProps) => (
 <div
     style={{
       display: "grid",
@@ -6,6 +8,7 @@
       gridTemplateColumns: "repeat(auto-fill, 10rem)",
       gridAutoRows: "auto",
       gridGap: "4rem",
+      userSelect: "text",
     }}>
 {{stories}}
 </div>

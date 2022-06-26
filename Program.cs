@@ -25,7 +25,7 @@ if (src == null)
 }
 
 if (!Directory.Exists(src))
-{ 
+{
     Console.WriteLine($"[{src}] directory not exists");
     return;
 }
@@ -50,10 +50,10 @@ Console.ResetColor();
 Console.WriteLine($"\t{SRC} {src}");
 Console.WriteLine($"\t{OUT} {dest}");
 
-if(!dest.EndsWith(compName) && !dest.EndsWith($"{PREFIX}{compName}"))
+if (!dest.EndsWith(compName) && !dest.EndsWith($"{PREFIX}{compName}"))
     dest = Path.Combine(dest, $"{PREFIX}{compName}");
 var outDir = Path.GetFullPath(dest);
-if(!Directory.Exists(outDir)) 
+if (!Directory.Exists(outDir))
     Directory.CreateDirectory(outDir);
 
 StringBuilder enumesBody = new StringBuilder();
@@ -62,7 +62,7 @@ StringBuilder switchs = new StringBuilder();
 StringBuilder stories = new StringBuilder();
 StringBuilder wicons = new StringBuilder();
 StringBuilder isIn = new StringBuilder();
-List<string> fileNames = new ();
+List<string> fileNames = new();
 
 
 foreach (var file in Directory.GetFiles(src, "*.svg"))
@@ -161,11 +161,11 @@ void GenerateSvg(string path)
 {
     string fileName = Path.GetFileNameWithoutExtension(path);
     fileNames.Add(fileName);
-     string nameLower = fileName.ToCamelCase();
+    //string nameLower = fileName.ToCamelCase();
     string nameUpper = fileName.ToPascalCase();
-    string nameSCREAM = fileName.ToSCREAMING();
+    //string nameSCREAM = fileName.ToSCREAMING();
     string dir = Path.Combine(outDir, SVGS_FOLDER, nameUpper);
-    if(Directory.Exists(dir))
+    if (Directory.Exists(dir))
         Directory.Delete(dir, true);
     Thread.Sleep(1);
     Directory.CreateDirectory(dir);
@@ -190,13 +190,13 @@ void GenerateSvg(string path)
                           .Replace("class=", "className=");
         element = regexClean.Replace(element, "");
         var styleMatch = regexStyle.Match(element);
-        if (styleMatch.Success) 
+        if (styleMatch.Success)
         {
             string matchValue = styleMatch.Groups[3].Value;
 
             string[] ks = matchValue.Split(";", StringSplitOptions.RemoveEmptyEntries);
-            
-           
+
+
             string fix = string.Join(",", ks.Select(m =>
             {
                 string k = regexStylePart.Match(m).Groups[1].Value.ToCamelCase();
@@ -217,14 +217,14 @@ void GenerateSvg(string path)
                             .Replace("{{name}}", nameUpper);
     File.WriteAllText(svgIndexFile, svgIndex);
 
-    enumesBody.AppendLine($"{nameLower} = \"{nameSCREAM}\",");
+    enumesBody.AppendLine($"{nameUpper} = \"{nameUpper}\",");
     imports.AppendLine($"import {{ {nameUpper} }} from './{SVGS_FOLDER}/{nameUpper}/{nameUpper}';");
-    switchs.AppendLine($"{{icon === {PREFIX}{compName}List.{nameLower} && <{nameUpper} className='svg' {{...props}} />}}");
+    switchs.AppendLine($"{{icon === {PREFIX}{compName}List.{nameUpper} && <{nameUpper} className='svg' {{...props}} />}}");
 
 
     string story = File.ReadAllText("STORYBOOK_ELEMENT_TEMPLATE.txt")
                             .Replace("{{prefix}}", PREFIX)
-                            .Replace("{{name}}", nameSCREAM)
+                            .Replace("{{name}}", nameUpper)
                             .Replace("{{comp-name}}", compName);
     string storyTemplate = File.ReadAllText("STORYBOOK_ITEM_TEMPLATE.txt")
                             .Replace("{{name}}", nameUpper)
@@ -232,7 +232,7 @@ void GenerateSvg(string path)
     stories.AppendLine(storyTemplate);
     wicons.AppendLine(story);
 
-    isIn.AppendLine($"if (candidate === {PREFIX}{compName}List.{nameLower}) return true;");
+    isIn.AppendLine($"if (candidate === {PREFIX}{compName}List.{nameUpper}) return true;");
 }
 
 
