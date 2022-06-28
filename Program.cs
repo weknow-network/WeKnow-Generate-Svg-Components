@@ -159,7 +159,11 @@ File.WriteAllText(IWSvgSafePropsFile, IWSvgSafeProps);
 
 void GenerateSvg(string path)
 {
-    string fileName = Path.GetFileNameWithoutExtension(path);
+    string fileName = Path.GetFileNameWithoutExtension(path)
+                        .Replace("(", "")
+                        .Replace(")", "")
+                        .Replace(" ", "")
+                        .Trim();
     fileNames.Add(fileName);
     //string nameLower = fileName.ToCamelCase();
     string nameUpper = fileName.ToPascalCase();
