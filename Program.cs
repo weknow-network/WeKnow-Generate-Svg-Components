@@ -151,8 +151,8 @@ File.WriteAllText(IWSvgPropsFile, IWSvgProps);
 
 string IWSvgSafeProps = File.ReadAllText(Path.Combine(CONTRACTS_FOLDER, "IWSvgSafeProps.txt"))
     .Replace("{{prefix}}", PREFIX)
-    .Replace("{{name}}", compName)
-    .Replace("{{names}}", string.Join(" | ", fileNames.Select(m => $"'{m}'")));
+    .Replace("{{name}}", compName);
+    //.Replace("{{names}}", string.Join(" | ", fileNames.Select(m => $"'{m}'")));
 string IWSvgSafePropsFile = Path.Combine(contractsDir, $"IW{compName}SvgSafeProps.ts");
 File.WriteAllText(IWSvgSafePropsFile, IWSvgSafeProps);
 

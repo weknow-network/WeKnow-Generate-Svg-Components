@@ -2,5 +2,5 @@ import { ISvgProps } from "../../ISvgProps";
 import { {{prefix}}{{name}}List } from "../{{prefix}}{{name}}List";
 
 export interface IW{{name}}SvgSafeProps extends ISvgProps {
-  icon?: {{prefix}}{{name}}List | {{names}};
+  icon?: {{prefix}}{{name}}List | keyof typeof {{prefix}}{{name}}List;
 }
