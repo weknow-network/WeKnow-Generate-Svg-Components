@@ -211,7 +211,10 @@ void GenerateSvg(string path)
             }));
             element = regexStyle.Replace(element, $"$1{{{{{fix}}}}}");
         }
-        content.AppendLine(element);
+        if (!element.StartsWith("<style"))
+        {
+            content.AppendLine(element);
+        }
     }
     string raw = rawTemplate.Replace("{{body}}", content.ToString());
 
