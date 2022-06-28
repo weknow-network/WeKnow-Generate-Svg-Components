@@ -1,5 +1,5 @@
 ﻿<div
     style={style}>
-<W{{prefix}}{{comp-name}} icon='{{name}}' {...args} />
 <h1>{{name}}</h1>
+<W{{prefix}}{{comp-name}} icon='{{name}}' {...args} />
 </div>

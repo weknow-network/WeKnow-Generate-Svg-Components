@@ -16,7 +16,13 @@ const defaultProps: ISvgProps = {
   width: "{{size}}rem",
 };
 
-const style = { userSelect: "text", margin: "4rem" } as const;
-
+const style = {
+  display: "grid",
+  gridAutoFlow: "row",
+  userSelect: "text",
+  width: "max-content",
+  justifyContent: "center",
+  justifyItems: "center",
+} as const;
 
 {{stories}}

@@ -1,14 +1,21 @@
-﻿const style = { userSelect: "text", margin: "4rem" } as const;
+﻿const style = {
+  display: "grid",
+  gridAutoFlow: "row",
+  userSelect: "text",
+  width: "max-content",
+  justifyContent: "center",
+  justifyItems: "center",
+} as const;
 
 export const ALL = (args: ISvgProps) => (
 <div
     style={{
-      display: "grid",
+      display: "flex",
+      flexWrap: "wrap",
       width: "100vw",
-      gridTemplateColumns: "repeat(auto-fill, 10rem)",
-      gridAutoRows: "auto",
-      gridGap: "4rem",
-      userSelect: "text",
+      gridColumnGap: "8rem",
+      gridRowGap: "6rem",
+      fontSize: "1.5rem",
     }}>
 {{stories}}
 </div>
