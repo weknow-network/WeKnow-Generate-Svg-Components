@@ -1,12 +1,4 @@
-﻿const style = {
-  display: "grid",
-  gridAutoFlow: "row",
-  userSelect: "text",
-  width: "max-content",
-  justifyContent: "center",
-  justifyItems: "center",
-} as const;
-
+﻿
 export const ALL = (args: ISvgProps) => (
 <div
     style={{

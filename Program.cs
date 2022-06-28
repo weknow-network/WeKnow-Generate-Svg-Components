@@ -163,7 +163,8 @@ void GenerateSvg(string path)
                         .Replace("(", "")
                         .Replace(")", "")
                         .Replace(" ", "")
-                        .Trim();
+                        .Trim()
+                        .ToPascalCase();
     fileNames.Add(fileName);
     //string nameLower = fileName.ToCamelCase();
     string nameUpper = fileName.ToPascalCase();
