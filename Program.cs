@@ -211,7 +211,7 @@ void GenerateSvg(string path)
             }));
             element = regexStyle.Replace(element, $"$1{{{{{fix}}}}}");
         }
-        if (!element.StartsWith("<style"))
+        if (!element.StartsWith("<style") && !element.StartsWith("<defs"))
         {
             content.AppendLine(element);
         }
